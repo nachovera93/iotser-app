@@ -85,7 +85,7 @@ export default {
   },
 
   /*
-  ** Build configuration
+  ** Build configurationnnnnnn
   */
   build: {
     transpile: [/^element-ui/],
