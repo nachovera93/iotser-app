@@ -46,7 +46,7 @@ export default {
       mounted() {
 
             this.getNow();
-            //this.updateColorClass();
+            
 
         },
         beforeDestroy() {
