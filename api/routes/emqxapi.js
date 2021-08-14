@@ -163,11 +163,11 @@ global.check_mqtt_superuser = async function checkMqttSuperUser(){
   
       await EmqxAuthRule.create(
         {
-          publish: ["#"],
+           publish: ["#"],
           subscribe: ["#"],
-          userId: "aaaaaaaaaaa",
-          username: "superuser",
-          password: "superuser",
+          userId: "emqxmqttsuperuser",
+          username: process.env.EMQX_NODE_SUPERUSER_USER,
+          password: process.env.EMQX_NODE_SUPERUSER_PASSWORD,
           type: "superuser",
           time: Date.now(),
           updatedTime: Date.now()
