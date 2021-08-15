@@ -156,7 +156,7 @@ global.check_mqtt_superuser = async function checkMqttSuperUser(){
     const superusers = await EmqxAuthRule.find({type:"superuser"});
 
     if (superusers.length > 0 ) {
-  
+      console.log("hay mas de 1 superuser")
       return;
   
     }else if ( superusers.length == 0 ) {
