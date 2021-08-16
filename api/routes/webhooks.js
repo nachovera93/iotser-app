@@ -18,37 +18,7 @@ var client;
 //**** A P I *******
 //******************
 
-var ex = {
-  username: "superuser",
-  password: "superuser",
-  topic: "5ffcc00149fdcf311a4de607/22222/",
-  variables: [
-    {
-      variable: "6hRtQGSFIl",
-      variableFullName: "Temperature",
-      variableType: "input",
-      variableSendFreq: 10
-    },
-    {
-      variable: "byTmALXl2Y",
-      variableFullName: "Humidity",
-      variableType: "input",
-      variableSendFreq: 5
-    },
-    {
-      variable: "PMHPI0zBNQ",
-      variableFullName: "Pump",
-      variableType: "output",
-      variableSendFreq: undefined
-    },
-    {
-      variable: "yvFApiNOqz",
-      variableFullName: "Fan",
-      variableType: "output",
-      variableSendFreq: undefined
-    }
-  ]
-};
+
 //DEVICE CREDENTIALS WEBHOOK
 router.post("/getdevicecredentials", async (req, res) => {
   try {

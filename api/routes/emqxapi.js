@@ -3,6 +3,8 @@ const router = express.Router();
 const axios = require("axios");
 const colors = require("colors");
 
+import EmqxAuthRule from "../models/emqx_auth"; 
+
 const auth = {
   auth: {
     username: "admin",
@@ -33,14 +35,16 @@ Para borrar manualmente los recursos y reiniciemos node */
 async function listResources() {
 
 try {
+    console.log("***** Vamos a listar recursos *****");
     const url = "http://"+process.env.EMQX_NODE_HOST+":8085/api/v4/resources/";
-
+    console.log("***** pasamor url *****");
     const res = await axios.get(url, auth);
-  
+    console.log("***** Hacemos promesa *****");
     const size = res.data.data.length;
-  
+    console.log("**** size ***** : " + res.data.data.length);
+    console.log("****res status****" + res.status);
     if (res.status === 200) {
-  
+      console.log("***** res status es 200 *****");
       if (size == 0) {
         console.log("***** Creating emqx webhook resources *****".green);
   
@@ -153,17 +157,18 @@ async function createResources() {
 global.check_mqtt_superuser = async function checkMqttSuperUser(){
 
   try {
+    console.log("Creando EmqxAuthrule");
     const superusers = await EmqxAuthRule.find({type:"superuser"});
-
+    
     if (superusers.length > 0 ) {
-      console.log("hay mas de 1 superuser")
+      console.log("hay mas de 1 superuser");
       return;
   
     }else if ( superusers.length == 0 ) {
-  
+      console.log("hay 0 superuser");
       await EmqxAuthRule.create(
         {
-           publish: ["#"],
+          publish: ["#"],
           subscribe: ["#"],
           userId: "emqxmqttsuperuser",
           username: process.env.EMQX_NODE_SUPERUSER_USER,
@@ -174,7 +179,7 @@ global.check_mqtt_superuser = async function checkMqttSuperUser(){
         }
       );
   
-      console.log("Mqtt super user created")
+      console.log("Mqtt super user created");
   
     }
   } catch (error) {
