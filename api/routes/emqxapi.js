@@ -36,7 +36,7 @@ async function listResources() {
 
 try {
     console.log("***** Vamos a listar recursos *****");
-    const url = "http://"+process.env.EMQX_NODE_HOST+":8085/api/v4/resources/";
+    const url = "http://"+process.env.EMQX_NODE_HOST+":8081/api/v4/resources/";
     console.log("***** pasamor url *****");
     const res = await axios.get(url, auth);
     console.log("***** Hacemos promesa *****");
@@ -74,7 +74,7 @@ try {
       } else {
         function printWarning() {
           console.log(
-            "DELETE ALL WEBHOOK EMQX RESOURCES AND RESTART NODE - youremqxdomain:8085/#/resources"
+            "DELETE ALL WEBHOOK EMQX RESOURCES AND RESTART NODE - youremqxdomain:8081/#/resources"
               .red
           );
           setTimeout(() => {
@@ -101,7 +101,7 @@ try {
 async function createResources() {
 
     try {
-        const url = "http://"+process.env.EMQX_NODE_HOST+":8085/api/v4/resources";
+        const url = "http://"+process.env.EMQX_NODE_HOST+":8081/api/v4/resources";
 
         const data1 = {
             "type": "web_hook",
